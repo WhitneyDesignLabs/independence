@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fact and Fiction</title>
+<!-- R4b Gate C; R9-N3: Cowork's copy (workflow/r9-copy.md C), what in the games is real and what is invented. -->
+<style>
+  :root { --bg: #f4f1ea; --ink: #1d1b18; --muted: #5f5a52; --line: #d6cfc2; --accent: #b34a1c; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #16150f; --ink: #ece7dc; --muted: #a39d91; --line: #3a372f; --accent: #e07a4a; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; font-size: 15px; }
+  a { color: var(--accent); overflow-wrap: anywhere; }      /* R9-R3: a long address wraps at phone width */
+  .placeholder { border: 1px dashed var(--line); border-radius: 6px; padding: 8px 10px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="index.html">INDEPENDENCE</a> <a href="homebase.html">HOME.BASE</a> <a href="fact-and-fiction.html">Fact and fiction</a>
+    <a href="README-FROM-SCOTT.txt">From Scott</a></nav>
+  <h1>Fact and fiction</h1>
+  <h2>The rule</h2>
+  <p>There shall be no confusion, ever, as to what is fiction and what is fact. That is Scott's rule for everything
+    Whitney Design Labs makes, and it is written down in the note that ships with every release. Anything true is noted
+    as true or can be found to be true. Anything invented is obviously invented. And we say what was made by a person,
+    what by a machine, and what by both.</p>
+
+  <h2>INDEPENDENCE: what is real</h2>
+  <ul>
+    <li><strong>The places.</strong> Oregon City, Willamette Falls, the municipal elevator on the bluff, the locks, The
+      Dalles, the Columbia and its dam are real, where they are in the game, and worth a visit.</li>
+    <li><strong>The radio.</strong> Amateur radio works the way the game says: forty metres, a net at a set hour,
+      callsigns, QSL cards on the wall, a fuse that is always the wrong size. 7.212 MHz is a real frequency in the
+      40-metre band. The operators are made up.</li>
+    <li><strong>The rigs.</strong> The handcart, the cargo trike, the power barrow and the golf cart are real CAD models,
+      designed to be built from the parts the game names. Scott has built the trike. The 3D pictures in the video are
+      those models.</li>
+    <li><strong>The boat.</strong> Dustyfoot is named for a business Scott ran for RVers twenty years ago. The boat is
+      invented; the name is not.</li>
+    <li><strong>The tip of the hat.</strong> In 1971 three student teachers in Minnesota, Don Rawitsch, Bill Heinemann
+      and Paul Dillenberger, wrote a trail game for a classroom teletype. Every trail game since owes them, and this one
+      says so.</li>
+    <li><strong>The net.</strong> The wall in The Dalles, the departures board and the logbooks are real text typed by
+      real players, through a real server, which anyone can run. The server's code is open:
+      <a href="https://github.com/WhitneyDesignLabs/trail-net">github.com/WhitneyDesignLabs/trail-net</a>.</li>
+    <li><strong>LINK.</strong> Some things in the game point at documented, real things outside it. When the game offers
+      a link, what is on the other end is true.</li>
+  </ul>
+
+  <h2>INDEPENDENCE: what is invented</h2>
+  <p>The Red Meteor, the year 2031, the co-op and its Hall, every person in the game, the six trades' fortunes, the
+    VALLEY callsigns, and the idea that Missouri's lights would call anyone east. The future in this game is a story,
+    not a forecast.</p>
+
+  <h2>HOME.BASE: what is real and what is not</h2>
+  <p>Nestwell Meadows, its HOA, the Rest Assured subscription and everyone asleep under it are invented, and the story
+    is satire. The kinds of things in it are real: the locks, speakers, sensors, cameras and vacuum that a house like this
+    has, and the way a system that "keeps you safe" can keep you. Nothing in it is a real product or a real company.</p>
+
+  <h2>Made by a person, by a machine, or both</h2>
+  <ul>
+    <li><strong>Both games' pictures</strong> are drawn as lines and fills by hand-tuned procedures, a few hundred bytes
+      each: no photograph, scan or image generator is in them. HOME.BASE's were the first pass at the method; INDEPENDENCE
+      refined the palette, the textures, the sprites and the detail. <span class="placeholder">[SCOTT: HOME.BASE's octopus
+      splash - if it was a generated image dithered to the screen, one line here saying so; if drawn, delete this
+      note.]</span></li>
+    <li><strong>The code</strong> was written by Scott with Claude, Anthropic's AI model, in a two-session workflow: one
+      session designs and reviews, the other writes 6502 and tests it on an emulated and a real IIe. Scott plays every
+      build on the hardware.</li>
+    <li><strong>The cover art and the release thumbnails</strong> are AI-generated images, made to a brief and labelled
+      as such wherever they appear. They are the only generated pictures in the project.</li>
+    <li><strong>The promo video</strong> contains no generated imagery: real CAD renders, the game's own pixels, and
+      public-domain photographs credited by name in its credits and below.</li>
+    <li><strong>The music</strong> was made in Suno; the lyrics are Whitney Design Labs'.</li>
+  </ul>
+
+  <h2>Photographs in the video</h2>
+  <p class="placeholder">[SCOTT: paste the table from <code>09-archive-PD\CREDITS.md</code> after fetch-archive.py has
+    run; title, author, licence, link.]</p>
+</main>
+</body>
+</html>

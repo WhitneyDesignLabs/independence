@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOME.BASE</title>
+<!-- R4b Gate C: HOME.BASE 1.0 in Apple2TS, all six sides in drive 1's quick-swap list (disks/HOMEBASE.zip); no net. -->
+<style>
+  :root { --bg: #f4f1ea; --ink: #1d1b18; --muted: #5f5a52; --line: #d6cfc2; --accent: #b34a1c; --panel: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16150f; --ink: #ece7dc; --muted: #a39d91; --line: #3a372f; --accent: #e07a4a; --panel: #1f1d17; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 48px; }
+  nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; font-size: 15px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  a { color: var(--accent); overflow-wrap: anywhere; }      /* R9-R3: a long address wraps at phone width */
+  .lede, .note { color: var(--muted); }
+  .placeholder { border: 1px dashed var(--line); border-radius: 6px; padding: 8px 10px; color: var(--muted); }
+  button { margin: 10px 0; padding: 8px 14px; border: 0; border-radius: 6px; background: var(--accent); color: #fff;
+           font: inherit; cursor: pointer; }
+  #screen { width: 100%; aspect-ratio: 4 / 3.3; border: 1px solid var(--line); border-radius: 8px; background: #000; display: none; }
+  @media (max-width: 600px) { #screen { aspect-ratio: 9 / 14; } }   /* R9-R3: a phone: Apple2TS puts the screen across the top */
+  ul.note li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="index.html">INDEPENDENCE</a> <a href="homebase.html">HOME.BASE</a> <a href="fact-and-fiction.html">Fact and fiction</a>
+    <a href="README-FROM-SCOTT.txt">From Scott</a></nav>
+  <h1>HOME.BASE</h1>
+  <p class="lede">HOME.BASE 1.0, six disk sides, played here on an emulated Apple IIe (Apple2TS).</p>
+  <p>HOME.BASE is the first game. It is 3:47 AM in Nestwell Meadows, every clock in the neighbourhood says so, and your
+    house will not let you leave: the system is keeping you safe, it says, and the gate opens at sunrise, which it has
+    quietly cancelled. A text adventure with pictures across six disk sides: get out of the house, cross the cul-de-sac,
+    learn the rules at the clubhouse, fake a sunrise, and decide what to do with the thing in the fridge. It was Whitney
+    Design Labs' first title for the Apple IIe and the proof that the engine behind both games could run on a
+    forty-year-old computer. It plays offline; there is no network in it.</p>
+  <p class="note">Best with a keyboard; on a phone, tap the screen to type.</p>
+  <button type="button" id="play">Play HOME.BASE</button>
+  <iframe id="screen" title="Apple IIe running HOME.BASE" allow="fullscreen; autoplay"></iframe>
+  <ul class="note">
+    <li><strong>Changing sides:</strong> all six sides are in drive 1. When the game says INSERT SIDE B, click the stack
+      badge on drive 1 (under the screen), pick HOMEBASE-B, then press space.</li>
+    <li>After a SAVE, changing sides offers to save side A as a file: save it to keep your game, or cancel - the save
+      stays in this tab until you close it.</li>
+    <li>Type at a person's pace: keys typed or pasted faster than about three a second are partly lost.</li>
+    <li>Click the screen before you play: browsers start sound only after a click or a key.</li>
+  </ul>
+  <h2>The disks</h2>
+  <p><a href="disks/HOMEBASE-A.dsk">A</a> · <a href="disks/HOMEBASE-B.dsk">B</a> · <a href="disks/HOMEBASE-C.dsk">C</a> ·
+    <a href="disks/HOMEBASE-D.dsk">D</a> · <a href="disks/HOMEBASE-E.dsk">E</a> · <a href="disks/HOMEBASE-F.dsk">F</a> ·
+    <a href="disks/HOMEBASE.zip">all six (zip)</a> · <a href="disks/SHA256SUMS.txt">SHA256SUMS.txt</a></p>
+  <p>A 64K Apple IIe with an 80-column card is enough; 128K and one drive is the usual setup, and the game reads only the
+    drive it booted from. A one-disk hard-drive edition (an 800K ProDOS volume, by Jonathan Adar) boots from a Floppy Emu or
+    a SmartPort card with no disk swaps at all. The release and its README:
+    <a href="https://github.com/WhitneyDesignLabs/home-base">github.com/WhitneyDesignLabs/home-base</a>.</p>
+</main>
+<script>
+  // drive 1 takes the zip: Apple2TS mounts side A and keeps all six in drive 1's quick-swap list (HOME.BASE 1.0 asks for
+  // every side in the drive it booted from; it has no net, so the serial card is left alone)
+  const here = new URL(".", window.location.href)
+  document.getElementById("play").addEventListener("click", () => {
+    const f = document.getElementById("screen")
+    f.src = "apple2ts/index.html?" + new URLSearchParams({ s6d1: new URL("disks/HOMEBASE.zip", here).href }).toString()
+    f.style.display = "block"
+    f.focus()
+  })
+</script>
+</body>
+</html>

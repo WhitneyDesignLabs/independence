@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INDEPENDENCE</title>
+<meta property="og:title" content="INDEPENDENCE - a text adventure for the Apple IIe">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://whitneydesignlabs.github.io/independence/">
+<meta property="og:image" content="https://whitneydesignlabs.github.io/independence/art/og-link-preview-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- R4b Gate C: INDEPENDENCE in Apple2TS (an emulated 128K //e), the net through the game server's relay over wss.
+     web/build.sh puts the emulator in apple2ts/ and the disks in disks/. Every [PLACEHOLDER] is Cowork's copy. -->
+<style>
+  :root { --bg: #f4f1ea; --ink: #1d1b18; --muted: #5f5a52; --line: #d6cfc2; --accent: #b34a1c; --panel: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16150f; --ink: #ece7dc; --muted: #a39d91; --line: #3a372f; --accent: #e07a4a; --panel: #1f1d17; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 48px; }
+  nav { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; font-size: 15px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  a { color: var(--accent); overflow-wrap: anywhere; }      /* R9-R3: a long address wraps at phone width */
+  .lede, .note { color: var(--muted); }
+  .placeholder { border: 1px dashed var(--line); border-radius: 6px; padding: 8px 10px; color: var(--muted); }
+  button { margin: 10px 0; padding: 8px 14px; border: 0; border-radius: 6px; background: var(--accent); color: #fff;
+           font: inherit; cursor: pointer; }
+  #screen { width: 100%; aspect-ratio: 4 / 3.3; border: 1px solid var(--line); border-radius: 8px; background: #000; display: none; }
+  @media (max-width: 600px) { #screen { aspect-ratio: 9 / 14; } }   /* R9-R3: a phone: Apple2TS puts the screen across the top */
+  ul.note li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="index.html">INDEPENDENCE</a> <a href="homebase.html">HOME.BASE</a> <a href="fact-and-fiction.html">Fact and fiction</a>
+    <a href="README-FROM-SCOTT.txt">From Scott</a></nav>
+  <h1>INDEPENDENCE</h1>
+  <p class="lede">An Apple IIe game, played here on an emulated Apple IIe (Apple2TS), or on your own from the disks below. Watch <a href="https://youtu.be/vJguUZ5YdAY">the trailer</a> (3 min).</p>
+  <p>Oregon, 2031. Two years after the Red Meteor, the lights came back on in Missouri, and a voice on the ham radio says
+    come east. INDEPENDENCE is a text adventure with pictures for a 128K Apple IIe: pick your trade, name your party of
+    five, build a rig out of what Oregon City can spare, and take the co-op's parcels up the Columbia to The Dalles, by
+    river or by road. This is Act 1; the trail continues east in free updates. Nobody dies in this game, not even of
+    that.</p>
+  <p class="note">Best with a keyboard; on a phone, tap the screen to type.</p>
+  <button type="button" id="play">Play INDEPENDENCE</button>
+  <iframe id="screen" title="Apple IIe running INDEPENDENCE" allow="fullscreen; autoplay"></iframe>
+  <ul class="note">
+    <li>Both disk sides are in the drives; the game finds the side it needs by itself.</li>
+    <li>The net (the Register's wall, the notes) goes through the game server; it plays on offline if the server cannot be
+      reached.</li>
+    <li>Type at a person's pace: keys typed or pasted faster than about three a second are partly lost.</li>
+    <li>Click the screen before you play: browsers start sound only after a click or a key.</li>
+    <li>SAVE writes to this tab's copy of side A. To keep it, use the emulator's drive menu (Save Disk) before you close
+      the tab.</li>
+  </ul>
+  <h2>The disks</h2>
+  <p><a href="disks/INDEP-A.dsk">INDEP-A.dsk</a> · <a href="disks/INDEP-B.dsk">INDEP-B.dsk</a> ·
+    <a href="disks/NETCHECK.dsk">NETCHECK.dsk</a> (the net check: P probes the card, H says hello to the server) ·
+    <a href="disks/SHA256SUMS.txt">SHA256SUMS.txt</a></p>
+  <p>On a real machine you need a 128K Apple IIe (or a IIc, IIgs or an emulator of one) and one 5.25-inch drive. The net
+    is optional: a CoGS card plays it online with nothing to set and can even boot the game from the network; an Uthernet
+    II needs three numbers typed once; a Super Serial Card needs a PC running the small relay in the package. The full
+    package (both sides, NETCHECK, the relay, the README and a note from Scott) is on the release page:
+    <a href="https://github.com/WhitneyDesignLabs/independence/releases/latest">github.com/WhitneyDesignLabs/independence/releases/latest</a>. The server is <code>158.101.9.238</code>, port <code>6502</code>; the
+    README says where to type it.</p>
+</main>
+<script>
+  // The disks go to the emulator as full URLs (a bare name is looked up under its own /disks/). The relay is the game
+  // server's, behind TLS (wss: a browser refuses ws:// from an https page); ?ssc=ws://host:port on this page overrides
+  // it, for a Pi on a LAN from a page served over http. ?netcheck boots NETCHECK instead of the game.
+  const RELAY = "wss://158-101-9-238.sslip.io:6503"
+  const here = new URL(".", window.location.href)
+  const disk = name => new URL("disks/" + name, here).href
+  const params = new URLSearchParams(window.location.search)
+  const relay = params.get("ssc") || RELAY
+  function play() {
+    const check = params.has("netcheck")
+    const q = new URLSearchParams({ s6d1: disk(check ? "NETCHECK.dsk" : "INDEP-A.dsk"), s6d2: disk(check ? "INDEP-A.dsk" : "INDEP-B.dsk"), ssc: relay })
+    const f = document.getElementById("screen")
+    f.src = "apple2ts/index.html?" + q.toString()
+    f.style.display = "block"
+    f.focus()
+  }
+  document.getElementById("play").addEventListener("click", play)
+</script>
+</body>
+</html>
