@@ -2,7 +2,9 @@
 
 **Watch the trailer** (3 min): https://youtu.be/vJguUZ5YdAY
 
-# INDEPENDENCE 1.0
+# INDEPENDENCE 1.0.1
+
+1.0.1 fixes a freeze on the CoGS card's network boot at the Register, once its wall holds seven parties.
 
 **A WHITNEY DESIGN LABS GAME, FOR THE APPLE IIE.**
 
